@@ -7,16 +7,18 @@ import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
+import { Component } from "react";
 
-const useStyles = makeStyles({
-  tableFrame: {
+const styles = (theme) => ({
+  root: {
     width: "1700px",
+    marginTop: theme.spacing.unit * 3,
     overFlowX: "auto",
   },
 
   table: {
-    width: "100%",
+    minWidth: 1080,
   },
 });
 
@@ -36,38 +38,41 @@ const customer = [
     school: "none",
   },
 ];
-const App = () => {
-  const classes = useStyles();
-  return (
-    <Paper className={classes.tableFrame}>
-      <h1>고객정보</h1>
-      <Table clsssName={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell> 번호 </TableCell>
-            <TableCell> 사진 </TableCell>
-            <TableCell> 이름 </TableCell>
-            <TableCell> 생일 </TableCell>
-            <TableCell> 학교 </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {customer.map((c) => {
-            return (
-              <Customer
-                key={c.id}
-                id={c.id}
-                image={c.image}
-                name={c.name}
-                birthday={c.birthday}
-                school={c.school}
-              />
-            );
-          })}
-        </TableBody>
-      </Table>
-    </Paper>
-  );
-};
+class App extends Component {
+  render() {
+    const { classes } = this.props;
 
-export default App;
+    return (
+      <Paper className={classes.root}>
+        <h1>고객정보</h1>
+        <Table clsssName={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell> 번호 </TableCell>
+              <TableCell> 사진 </TableCell>
+              <TableCell> 이름 </TableCell>
+              <TableCell> 생일 </TableCell>
+              <TableCell> 학교 </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {customer.map((c) => {
+              return (
+                <Customer
+                  key={c.id}
+                  id={c.id}
+                  image={c.image}
+                  name={c.name}
+                  birthday={c.birthday}
+                  school={c.school}
+                />
+              );
+            })}
+          </TableBody>
+        </Table>
+      </Paper>
+    );
+  }
+}
+
+export default withStyles(styles)(App);
