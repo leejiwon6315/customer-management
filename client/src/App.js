@@ -1,5 +1,4 @@
 import Customer from "./Components/Customer";
-
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
@@ -13,7 +12,7 @@ import { Component } from "react";
 const styles = (theme) => ({
   root: {
     width: "1700px",
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing(3),
     overFlowX: "auto",
   },
 
@@ -22,23 +21,23 @@ const styles = (theme) => ({
   },
 });
 
-const customer = [
-  {
-    id: 1,
-    image: "https://placeimg.com/64/64/1",
-    name: "jeewon",
-    birthday: "19970102",
-    school: "숭실",
-  },
-  {
-    id: 2,
-    image: "https://placeimg.com/64/64/2",
-    name: "mong",
-    birthday: "20141020",
-    school: "none",
-  },
-];
 class App extends Component {
+  state = {
+    customers: "",
+  };
+
+  componentDidMount() {
+    this.callApi()
+      .then((res) => this.setState({ customers: res }))
+      .catch((err) => console.log(err));
+  }
+
+  callApi = async () => {
+    const response = await fetch("/api/customers");
+    const body = await response.json();
+    return body;
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -56,18 +55,20 @@ class App extends Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {customer.map((c) => {
-              return (
-                <Customer
-                  key={c.id}
-                  id={c.id}
-                  image={c.image}
-                  name={c.name}
-                  birthday={c.birthday}
-                  school={c.school}
-                />
-              );
-            })}
+            {this.state.customers
+              ? this.state.customers.map((c) => {
+                  return (
+                    <Customer
+                      key={c.id}
+                      id={c.id}
+                      image={c.image}
+                      name={c.name}
+                      birthday={c.birthday}
+                      school={c.school}
+                    />
+                  );
+                })
+              : ""}
           </TableBody>
         </Table>
       </Paper>
