@@ -2,7 +2,7 @@ import React from "react";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 
-const Customer = ({ image, name, id, birthday, school }) => {
+const Customer = ({ image, name, id, birthday, gender, job }) => {
   return (
     <TableRow>
       <TableCell>{id}</TableCell>
@@ -11,7 +11,8 @@ const Customer = ({ image, name, id, birthday, school }) => {
       </TableCell>
       <TableCell>{name}</TableCell>
       <TableCell>{birthday}</TableCell>
-      <TableCell>{school}</TableCell>
+      <TableCell>{gender}</TableCell>
+      <TableCell>{job}</TableCell>
     </TableRow>
   );
 };

@@ -63,7 +63,8 @@ class App extends Component {
               <TableCell> 사진 </TableCell>
               <TableCell> 이름 </TableCell>
               <TableCell> 생일 </TableCell>
-              <TableCell> 학교 </TableCell>
+              <TableCell> 성별 </TableCell>
+              <TableCell> 직업 </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -76,7 +77,8 @@ class App extends Component {
                     image={c.image}
                     name={c.name}
                     birthday={c.birthday}
-                    school={c.school}
+                    gender={c.gender}
+                    job={c.job}
                   />
                 );
               })
