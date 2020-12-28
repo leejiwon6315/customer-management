@@ -1,5 +1,4 @@
 const fs = require("fs");
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
@@ -30,9 +29,9 @@ app.get("/api/customers", (req, res) => {
   });
 });
 
-app.use("./image", express.static("./upload"));
+app.use("/image", express.static("./upload"));
 
-app.post("/api/cutomers", upload.single("image"), (req, res) => {
+app.post("/api/customers", upload.single("image"), (req, res) => {
   let sql = "INSERT INTO CUSTOMER VALUES (null, ?, ?, ?, ?, ?)";
   let image = "/image/" + req.file.filename;
   let name = req.body.name;
