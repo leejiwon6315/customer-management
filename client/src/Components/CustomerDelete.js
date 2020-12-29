@@ -38,7 +38,11 @@ class CustomerDelete extends React.Component {
   render() {
     return (
       <>
-        <Button variant="contained" onClick={this.handleClickOpen}>
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={this.handleClickOpen}
+        >
           삭제
         </Button>
         <Dialog open={this.state.open} onClose={this.handleClose}>

@@ -14,9 +14,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
-import { fade } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
+import { fade } from "@material-ui/core/styles";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = (theme) => ({
@@ -30,7 +30,6 @@ const styles = (theme) => ({
 
   menuButton: {
     marginRight: theme.spacing(2),
-    color: "#FE9677",
   },
 
   title: {
@@ -84,10 +83,10 @@ const styles = (theme) => ({
     },
   },
 
-  menu: {
-    margin: 15,
+  addButton: {
+    margin: 20,
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "right",
   },
 
   tableWrap: {
@@ -221,9 +220,11 @@ class App extends Component {
             </div>
           </Toolbar>
         </AppBar>
-        <div className={classes.menu}>
+
+        <div className={classes.addButton}>
           <CustomerAdd stateRefresh={this.stateRefresh} />
         </div>
+
         <Paper className={classes.tableWrap}>
           <Table clsssName={classes.table}>
             <TableHead>

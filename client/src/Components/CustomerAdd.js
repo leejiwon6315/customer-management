@@ -13,6 +13,16 @@ const styles = (theme) => ({
   hidden: {
     display: "none",
   },
+
+  addButton: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "400",
+    paddingTop: 10,
+    paddingLeft: 20,
+    paddingBottom: 10,
+    paddingRight: 20,
+  },
 });
 
 class CustomerAdd extends React.Component {
@@ -101,7 +111,12 @@ class CustomerAdd extends React.Component {
 
     return (
       <>
-        <Button variant="contained" onClick={this.handleClickOpen}>
+        <Button
+          className={classes.addButton}
+          color="primary"
+          variant="contained"
+          onClick={this.handleClickOpen}
+        >
           고객 추가하기
         </Button>
         <Dialog open={this.state.open} onClose={this.handleClose}>
