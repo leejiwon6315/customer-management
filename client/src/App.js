@@ -181,7 +181,7 @@ class App extends Component {
             </div>
           </Toolbar>
         </AppBar>
-
+        <CustomerAdd stateRefresh={this.stateRefresh} />
         <Paper className={classes.tableWrap}>
           <Table clsssName={classes.table}>
             <TableHead>
@@ -224,8 +224,6 @@ class App extends Component {
             </TableBody>
           </Table>
         </Paper>
-
-        <CustomerAdd stateRefresh={this.stateRefresh} />
       </div>
     );
   }
