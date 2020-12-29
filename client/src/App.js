@@ -84,6 +84,12 @@ const styles = (theme) => ({
     },
   },
 
+  menu: {
+    margin: 15,
+    display: "flex",
+    justifyContent: "center",
+  },
+
   tableWrap: {
     margin: 20,
   },
@@ -181,7 +187,9 @@ class App extends Component {
             </div>
           </Toolbar>
         </AppBar>
-        <CustomerAdd stateRefresh={this.stateRefresh} />
+        <div className={classes.menu}>
+          <CustomerAdd stateRefresh={this.stateRefresh} />
+        </div>
         <Paper className={classes.tableWrap}>
           <Table clsssName={classes.table}>
             <TableHead>
